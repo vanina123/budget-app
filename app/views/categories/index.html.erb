@@ -1,0 +1,11 @@
+<h1>Categories</h1>
+
+<% @categories.each do |category| %>
+  <div class="category">
+    <h2><%= category.name %></h2>
+    <%= image_tag category.icon %>
+    <a href="/categories/<%= category.id %>/expenditures">View Transactions</a>
+  </div>
+<% end %>
+
+<a href="/categories/new">Add New Category</a>
