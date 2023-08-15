@@ -1,10 +1,10 @@
 class ExpendituresController < ApplicationController
     before_action :authenticate_user!
 
-    # before_action :require_login, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  
     def index
-      @expenditures = current_user.expenditures.order(created_at: :desc)
+      @category = Category.find(params[:category_id])
+      @expenditures = @category.expenditures
+      @total_amount = @expenditures.sum(:amount)
     end
   
     def show
@@ -12,19 +12,21 @@ class ExpendituresController < ApplicationController
     end
   
     def new
+      @category = Category.find(params[:category_id])
       @expenditure = Expenditure.new
-      @categories = current_user.categories
+      @categories = Category.all
     end
-  
+
     def create
+      @category = Category.find(params[:category_id])
       @expenditure = Expenditure.new(expenditure_params)
       @expenditure.author = current_user
   
       if @expenditure.save
-        @expenditure.categories << params[:expenditure][:categories]
-        redirect_to expenditures_path
+        Record.create(category_id:params[:category_id],expenditure_id:@expenditure.id)
+          redirect_to category_expenditures_path(@category), notice: 'expenditure created'
       else
-        render :new
+          render :new
       end
     end
   
@@ -54,7 +56,7 @@ class ExpendituresController < ApplicationController
     private
   
     def expenditure_params
-      params.require(:expenditure).permit(:name, :amount, :categories)
+      params.require(:expenditure).permit(:name, :amount, :category_ids)
     end
   
     def require_login
