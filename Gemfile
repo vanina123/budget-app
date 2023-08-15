@@ -2,12 +2,13 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
-
+gem 'devise'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.6'
 gem 'rubocop', '>= 1.0', '< 2.0'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
+gem 'dotenv-rails', groups: %i[development test]
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
@@ -70,3 +71,4 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+gem 'bootstrap', '~> 5.3.1'
