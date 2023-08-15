@@ -3,7 +3,11 @@ class Category < ApplicationRecord
   has_many :records, dependent: :destroy
   has_many :expenditures, through: :records
 
+  def total_amount
+    expenditures.sum(:amount)
+  end
+
 
   #Validations
-  validates : name, presence: true, length: { maximum: 50 }
+  # validates : name, presence: true, length: { maximum: 50 }
 end
