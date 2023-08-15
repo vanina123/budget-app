@@ -13,6 +13,7 @@
       <tr>
         <td><%= expenditure.name %></td>
         <td>$<%= expenditure.amount %></td>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -21,5 +22,11 @@
 <p>
   Total amount: $<%= @total_amount %>
 </p>
-<a href="/categories/<%= @category.id %>/expenditures/new">Add a new expenditure</a>
-<a href="/categories">Back</a>
+<div class="add-container">
+<button class="add-expenditures"><a href="/categories/<%= @category.id %>/expenditures/new">Add a new expenditure</a>
+</button>
+</div>
+<div>
+<button class="back"><a href="/categories">Back</a></button>
+</div>
+
