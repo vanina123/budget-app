@@ -4,6 +4,7 @@
   <div class="category">
     <h2><%= category.name %></h2>
     <%= image_tag category.icon %>
+    <p>Total amount: $<%= category.total_amount %></p>
     <a href="/categories/<%= category.id %>/expenditures">View Transactions</a>
   </div>
 <% end %>
