@@ -7,7 +7,7 @@ class Category < ApplicationRecord
     expenditures.sum(:amount)
   end
 
+  validates :name, presence: true
+  validates :icon, presence: true
 
-  #Validations
-  # validates : name, presence: true, length: { maximum: 50 }
 end
