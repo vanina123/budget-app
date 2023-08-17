@@ -7,11 +7,11 @@ gem 'devise'
 gem 'rails', '~> 7.0.6'
 gem 'rubocop', '>= 1.0', '< 2.0'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem 'sprockets-rails'
 gem 'dotenv-rails', groups: %i[development test]
+gem 'sprockets-rails'
 # Use sqlite3 as the database for Active Record
-gem 'pg'
 gem 'cancancan'
+gem 'pg'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
@@ -72,3 +72,4 @@ group :test do
   gem 'webdrivers'
 end
 gem 'bootstrap', '~> 5.3.1'
+gem "font-awesome-sass", "~> 6.4.2"
