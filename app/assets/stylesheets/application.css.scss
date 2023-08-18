@@ -74,6 +74,7 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+  flex-direction: column;
 }
 .splash-head p {
   justify-content: center;
@@ -302,4 +303,7 @@ a {
 
 .new a {
   color: var(--color-white);
+}
+.display-p{
+  margin-top: 59px;
 }

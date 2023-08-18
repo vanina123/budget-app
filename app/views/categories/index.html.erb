@@ -1,41 +1,35 @@
 <div class="cat">
-
-
-<section class="cat-section">
-<div class="cat-heading">
-  <div class="bars"><i class="fa-solid fa-bars"></i></div>
-  <div class="heading">CATEGORIES</div>
-  <div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
-</div>
-
-<% if user_signed_in? %>
-  <div class="sign-out-btn"> <%= button_to "Log out", '/users/sign_out', method: :delete %> </div>
-<%end%>
-</section>
-
-<div class="display">
-<% @categories.each do |category| %>
-  <div class="category">
-    <div class="pic">
-      <img class ="pics" src= <%= image_tag category.icon %> >
-      
+  <section class="cat-section">
+    <div class="cat-heading">
+      <div class="bars"><i class="fa-solid fa-bars"></i></div>
+      <div class="heading">Categories</div>
+      <div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
     </div>
-    <div class="display-title">
-      <h2><%= category.name.capitalize %></h2>
-      <small><%= category.created_at.strftime('%d-%b-%Y') %>
-    </div>
-    <div class="dis-p">
-       <p>Total amount: $<%= category.total_amount %></p>
-
-    </div>
-
-    <a href="/categories/<%= category.id %>/expenditures">View Transactions</a>
+    <% if user_signed_in? %>
+      <div class="sign-out-btn">
+        <%= button_to "Log out", '/users/sign_out', method: :delete %>
+      </div>
+    <% end %>
+  </section>
+  <div class="display">
+    <% @categories.each do |category| %>
+      <%= link_to "/categories/#{category.id}/expenditures" do %>
+        <div class="category">
+          <div class="pic">
+            <img class="pics" src="<%= category.icon %>">
+          </div>
+          <div class="display-title">
+            <h2><%= category.name.capitalize %></h2>
+            <small><%= category.created_at.strftime('%d-%b-%Y') %></small>
+          </div>
+          <div class="dis-p">
+            <p>Total amount: $<%= category.total_amount %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-<% end %>
-</div>
-
-<div class ="new">
-  <a href="/categories/new">Add New Category</a>
-</div>
-
+  <div class="new">
+    <button><a href="/categories/new">Add New Category</a></button>
+  </div>
 </div>
