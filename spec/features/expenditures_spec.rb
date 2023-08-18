@@ -1,4 +1,3 @@
-# spec/features/transactions_spec.rb
 require 'rails_helper'
 
 RSpec.feature 'Expenditure', type: :feature do
