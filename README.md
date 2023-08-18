@@ -50,13 +50,13 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo]
+- [Live Demo](https://budgetapp-9uv3.onrender.com/)
 
 <!-- Presentation -->
 
 ## Video Presentation <a name="video"></a>
 
-- [Presentation Video]
+- [Presentation Video](https://www.loom.com/share/93977b3e79ac4c53ab9e6ddcda513b9f?sid=e1866a50-1df8-45ab-82f3-9252b90bbd0b)
 
 <!-- GETTING STARTED -->
 
