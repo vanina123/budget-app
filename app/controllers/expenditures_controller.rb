@@ -57,7 +57,7 @@ class ExpendituresController < ApplicationController
   private
 
   def expenditure_params
-    params.require(:expenditure).permit(:name, :amount, :category_ids).merge(author_id:current_user.id)
+    params.require(:expenditure).permit(:name, :amount, :category_ids).merge(author_id: current_user.id)
   end
 
   def require_login
