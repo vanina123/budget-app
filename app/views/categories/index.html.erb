@@ -1,9 +1,9 @@
 <div class="cat">
   <section class="cat-section">
     <div class="cat-heading">
-      <div class="bars"><i class="fa-solid fa-bars"></i></div>
+      <p class="back"><%= link_to strip_tags('&#9776;'), categories_path, class: "bck-link" %></p>
+
       <div class="heading">Categories</div>
-      <div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
     </div>
     <% if user_signed_in? %>
       <div class="sign-out-btn">

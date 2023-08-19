@@ -3,7 +3,7 @@ class ExpendituresController < ApplicationController
 
   def index
     @category = Category.find(params[:category_id])
-    @expenditures = @category.expenditures
+    @expenditures = @category.expenditures.order(created_at: :desc)
     @total_amount = @expenditures.sum(:amount)
   end
 
@@ -19,7 +19,6 @@ class ExpendituresController < ApplicationController
 
   def create
     @expenditure = Expenditure.new(expenditure_params)
-    @expenditure.author = current_user
 
     if @expenditure.save
       params[:category_ids].each do |id|
@@ -27,7 +26,8 @@ class ExpendituresController < ApplicationController
       end
       redirect_to category_expenditures_path(params[:category_id]), notice: 'expenditure created'
     else
-      render :new, status: 422
+      redirect_to category_expenditures_path(params[:category_id]), alert: 'expenditure not created'
+
     end
   end
 
@@ -57,7 +57,7 @@ class ExpendituresController < ApplicationController
   private
 
   def expenditure_params
-    params.require(:expenditure).permit(:name, :amount)
+    params.require(:expenditure).permit(:name, :amount, :category_ids).merge(author_id:current_user.id)
   end
 
   def require_login

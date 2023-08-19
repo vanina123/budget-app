@@ -1,10 +1,6 @@
 <div class="cat">
   <section class="cat-section">
-    <div class="back">
-      <%= link_to "/categories" do %>
-        <i class="fa-solid fa-arrow-left"></i>
-      <% end %>
-    </div>
+    <p class="back"><%= link_to strip_tags('&#8592;'), categories_path, class: "bck-link" %></p>
 
     <h1>Expenditure</h1>
   </section>

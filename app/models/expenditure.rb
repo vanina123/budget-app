@@ -3,6 +3,7 @@ class Expenditure < ApplicationRecord
   has_many :records, dependent: :destroy
   has_many :categories, through: :records
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true
   validates :amount, presence: true
+  validates :category_ids, presence: true
 end
