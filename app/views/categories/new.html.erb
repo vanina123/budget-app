@@ -1,0 +1,26 @@
+<div class="cat">
+  <section class="cat-section">
+    <div>
+     <p class="back"><%= link_to strip_tags('&#8592;'), categories_path, class: "bck-link" %></p>
+
+     <h1>New Category</h1>
+    </div>
+  </section>
+
+  <%= form_with(model: @category) do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :icon %>
+      <%= f.text_field :icon %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Create Category" %>
+    </div>
+  <% end %>
+
+</div>

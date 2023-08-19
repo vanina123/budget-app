@@ -1,0 +1,39 @@
+<% if @selected_category.present? %>
+  <div class="cat">
+    <section class="cat-section">
+      <p class="back"><%= link_to strip_tags('&#8592;'), "/categories/#{@selected_category.id}/expenditures", class: "bck-link" %></p>
+
+      <h1>Add a new Expenditure</h1>
+
+    </section>
+
+    <%= form_for(@expenditure, url: "/categories/#{@selected_category.id}/expenditures") do |f| %>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: "Name", class: "fields" %>
+        <%= f.hidden_field :category_ids, value:@selected_category.id, class: "fields" %>
+
+      </div>
+
+      <div class="field">
+        <%= f.label :amount %>
+        <%= f.number_field :amount, placeholder: "Amount", class: "fields" %>
+      </div>
+
+      <p>List of Categories</p>
+      <div class="form-check1">
+        <% @categories.each do |category| %>
+          <% unless category.id == @selected_category.id %>
+            <%= check_box_tag 'category_ids[]', category.id %>
+            <%= category.name %><br>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Save" %>
+      </div>
+    <% end %>
+
+  </div>
+<% end %>

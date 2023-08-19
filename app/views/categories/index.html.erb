@@ -1,0 +1,36 @@
+<div class="cat">
+  <section class="cat-section">
+    <div class="cat-heading">
+      <p class="back"><%= link_to strip_tags('&#9776;'), categories_path, class: "bck-link" %></p>
+
+      <div class="heading">Categories</div>
+      <% if user_signed_in? %>
+        <div class="sign-out-btn">
+          <%= button_to "Log out", '/users/sign_out', method: :delete %>
+        </div>
+     <% end %>
+    </div>
+    
+  </section>
+  <div class="display">
+    <% @categories.each do |category| %>
+      <%= link_to "/categories/#{category.id}/expenditures" do %>
+        <div class="category">
+          <div class="pic">
+            <img class="pics" src="<%= category.icon %>">
+          </div>
+          <div class="display-title">
+            <h2><%= category.name.capitalize %></h2>
+            <small><%= category.created_at.strftime('%d-%b-%Y') %></small>
+          </div>
+          <div class="dis-p">
+            <p>Total amount: $<%= category.total_amount %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="new">
+    <button><a href="/categories/new">Add New Category</a></button>
+  </div>
+</div>

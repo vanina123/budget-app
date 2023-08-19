@@ -1,0 +1,34 @@
+<div class="cat">
+  <section class="cat-section">
+    <p class="back"><%= link_to strip_tags('&#8592;'), categories_path, class: "bck-link" %></p>
+
+    <h1>Expenditure</h1>
+  </section>
+
+ <div class= "display">
+   <% @expenditures.each do |expenditure| %>
+     <div class ="category">
+        <div class= "display-title">
+          <p class>  <%= expenditure.name %> </p>
+          <small><%= expenditure.created_at.strftime('%d-%b-%Y') %> </small>
+        </div>
+
+        <div class = "dis-p">
+          <p> $<%= expenditure.amount %> </p>
+      
+        </div>
+      </div>
+   
+    <% end %>
+    <div class="display-p">
+      <p>
+        Total amount: $<%= @total_amount %>
+      </p>
+    </div>
+
+  </div>
+  <div class="new">
+    <button> <a href="/categories/<%= @category.id %>/expenditures/new">Add a new expenditure</a> </button>
+  </div>
+
+<div>
