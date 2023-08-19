@@ -4,12 +4,13 @@
       <p class="back"><%= link_to strip_tags('&#9776;'), categories_path, class: "bck-link" %></p>
 
       <div class="heading">Categories</div>
+      <% if user_signed_in? %>
+        <div class="sign-out-btn">
+          <%= button_to "Log out", '/users/sign_out', method: :delete %>
+        </div>
+     <% end %>
     </div>
-    <% if user_signed_in? %>
-      <div class="sign-out-btn">
-        <%= button_to "Log out", '/users/sign_out', method: :delete %>
-      </div>
-    <% end %>
+    
   </section>
   <div class="display">
     <% @categories.each do |category| %>

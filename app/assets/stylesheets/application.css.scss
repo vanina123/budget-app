@@ -127,11 +127,12 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: var(--color-white);
+  height: 10vh;
 }
 
 .sign-out-btn {
-  align-self: flex-end;
   margin-top: 0.2rem;
   padding: 0.4rem;
   cursor: pointer;
